@@ -29,6 +29,9 @@ class HomeView extends TabbedView {
             name: globalize.translate('Home')
         }, {
             name: globalize.translate('Favorites')
+        }, {
+            // CJ7 Stream: las bibliotecas salen del Home y pasan a esta pestaña
+            name: globalize.translate('HeaderMyMedia')
         }];
     }
 
@@ -46,6 +49,10 @@ class HomeView extends TabbedView {
 
             case 1:
                 depends = 'favorites';
+                break;
+
+            case 2:
+                depends = 'cj7libraries';
         }
 
         const instance = this;

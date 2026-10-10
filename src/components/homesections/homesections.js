@@ -27,6 +27,16 @@ export function getDefaultSection(index) {
     return DEFAULT_SECTIONS[index];
 }
 
+// CJ7 Stream: secciones que NO se muestran en el Home.
+// - Mis contenidos (bibliotecas): ahora vive en su propia pestaña junto a Inicio y Favoritos
+// - Recientes por biblioteca y "A continuación": reemplazados por las filas por género
+const CJ7_HIDDEN_SECTIONS = [
+    HomeSectionType.SmallLibraryTiles,
+    HomeSectionType.LibraryButtons,
+    HomeSectionType.LatestMedia,
+    HomeSectionType.NextUp
+];
+
 function getAllSectionsToShow(userSettings, sectionCount) {
     const sections = [];
     for (let i = 0, length = sectionCount; i < length; i++) {
@@ -35,19 +45,7 @@ function getAllSectionsToShow(userSettings, sectionCount) {
             section = getDefaultSection(0);
         }
 
-        sections.push(section);
-    }
-
-    // Ensure libraries are visible in TV layout
-    if (
-        layoutManager.tv
-            && !sections.includes(HomeSectionType.SmallLibraryTiles)
-            && !sections.includes(HomeSectionType.LibraryButtons)
-    ) {
-        return [
-            HomeSectionType.SmallLibraryTiles,
-            ...sections
-        ];
+        sections.push(CJ7_HIDDEN_SECTIONS.includes(section) ? HomeSectionType.None : section);
     }
 
     return sections;
