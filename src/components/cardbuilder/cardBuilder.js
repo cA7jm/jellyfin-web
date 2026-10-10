@@ -633,18 +633,27 @@ function getCardFooterText(item, apiClient, options, footerClass, progressHtml, 
 
         if (options.showYear || options.showSeriesYear) {
             const productionYear = item.ProductionYear && datetime.toLocaleString(item.ProductionYear, { useGrouping: false });
+            let yearText;
             if (item.Type === 'Series') {
                 if (item.Status === 'Continuing') {
-                    lines.push(globalize.translate('SeriesYearToPresent', productionYear || ''));
+                    yearText = globalize.translate('SeriesYearToPresent', productionYear || '');
                 } else if (item.EndDate && item.ProductionYear) {
                     const endYear = datetime.toLocaleString(datetime.parseISO8601Date(item.EndDate).getFullYear(), { useGrouping: false });
-                    lines.push(productionYear + ((endYear === productionYear) ? '' : (' - ' + endYear)));
+                    yearText = productionYear + ((endYear === productionYear) ? '' : (' - ' + endYear));
                 } else {
-                    lines.push(productionYear || '');
+                    yearText = productionYear || '';
                 }
             } else {
-                lines.push(productionYear || '');
+                yearText = productionYear || '';
             }
+
+            // CJ7 Stream: calificación (★ 7.8) delante del año en películas y series
+            if (item.CommunityRating && (item.Type === 'Movie' || item.Type === 'Series')) {
+                const ratingHtml = '<span class="cj7CardRating">★ ' + item.CommunityRating.toFixed(1) + '</span>';
+                yearText = yearText ? ratingHtml + ' · ' + yearText : ratingHtml;
+            }
+
+            lines.push(yearText);
         }
 
         if (options.showRuntime) {
