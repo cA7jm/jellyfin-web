@@ -1,6 +1,6 @@
 * {
     scrollbar-width: thin;
-    scrollbar-color: #3b3b3b #1a0f26;
+    scrollbar-color: #3b3b3b #151219;
 }
 
 .skinHeader,
@@ -12,7 +12,7 @@ html {
 .wizardStartForm,
 .ui-corner-all,
 .ui-shadow {
-    background-color: #0d0714;
+    background-color: #0b0a0e;
 }
 
 .emby-collapsible-button {
@@ -21,7 +21,7 @@ html {
 }
 
 .skinHeader-withBackground {
-    background-color: #1a0f26;
+    background-color: #151219;
 }
 
 .skinHeader.semiTransparent {
@@ -46,7 +46,7 @@ html {
 .nowPlayingPlaylist,
 .nowPlayingContextMenu,
 html {
-    background-color: #0d0714;
+    background-color: #0b0a0e;
 }
 
 .backgroundContainer.withBackdrop {
@@ -123,7 +123,7 @@ html {
 .formDialogHeader:not(.formDialogHeader-clear),
 .paperList,
 .visualCardBox {
-    background-color: #1a0f26;
+    background-color: #151219;
 }
 
 .layout-tv .formDialogFooter:not(.formDialogFooter-clear) {
@@ -179,7 +179,7 @@ html {
 
 .appfooter,
 .playlistSectionButton {
-    background: #1a0f26;
+    background: #151219;
     color: #ccc;
     color: rgba(255, 255, 255, 0.78);
 }
@@ -213,7 +213,7 @@ html {
 }
 
 .detailTableBodyRow-shaded:nth-child(even) {
-    background: #1f1230;
+    background: #19161d;
     background: rgba(30, 30, 30, 0.9);
 }
 
@@ -227,7 +227,7 @@ html {
 
 .noBackdropTransparency .detailPagePrimaryContainer,
 .noBackdropTransparency .detailPageSecondaryContainer {
-    background-color: #0d0714;
+    background-color: #0b0a0e;
 }
 
 .listItem-border {
@@ -326,7 +326,7 @@ html {
 
 .mainDrawer,
 .drawer-open {
-    background-color: #0d0714;
+    background-color: #0b0a0e;
 }
 
 .navMenuOption:hover {
@@ -485,11 +485,11 @@ html {
 #comicsPlayer,
 #bookPlayer,
 #pdfPlayer {
-    background: #0d0714;
+    background: #0b0a0e;
 }
 
 #comicsPlayer .swiper-pagination {
-    background: #0d0714;
+    background: #0b0a0e;
     color: #fff;
 }
 
@@ -503,7 +503,7 @@ html {
 }
 
 #dialogToc {
-    background-color: #0d0714;
+    background-color: #0b0a0e;
 }
 
 #dialogToc .bookplayerButtonIcon {
@@ -521,4 +521,23 @@ html {
 #dialogToc .toc li a:active,
 #dialogToc .toc li a:hover {
     color: #a855f7;
+}
+
+/* ===== CJ7 Stream: glow neón en tarjetas ===== */
+.cardBox:not(.visualCardBox) .cardScalable {
+    border-radius: 0.5em;
+    transition: box-shadow 200ms ease-out, transform 200ms ease-out;
+}
+
+/* Hover con mouse (PC) */
+@media (hover: hover) and (pointer: fine) {
+    .card:hover .cardBox:not(.visualCardBox) .cardScalable {
+        box-shadow: 0 0 0 1px rgba(168, 85, 247, 0.8), 0 0 10px rgba(168, 85, 247, 0.3);
+        transform: scale(1.03);
+    }
+}
+
+/* Foco con control remoto (TV LG) */
+.card:focus .cardBox:not(.visualCardBox) .cardScalable {
+    box-shadow: 0 0 0 1px rgba(168, 85, 247, 0.8), 0 0 10px rgba(168, 85, 247, 0.3);
 }

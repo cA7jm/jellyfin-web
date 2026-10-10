@@ -14,8 +14,8 @@ export const DEFAULT_COLOR_SCHEME: ColorSystemOptions = {
             main: '#a855f7'
         },
         background: {
-            default: '#0d0714',
-            paper: '#1a0f26'
+            default: '#0b0a0e',
+            paper: '#151219'
         },
         action: {
             selectedOpacity: 0.2
