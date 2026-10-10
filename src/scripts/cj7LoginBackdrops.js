@@ -4,7 +4,7 @@
 // URLs de unos fondos al azar. El login los rota la próxima vez.
 // Las imágenes de Jellyfin se pueden ver sin sesión; la lista de pelis no.
 
-const STORAGE_KEY = 'cj7LoginBackdrops';
+const STORAGE_KEY = 'cj7LoginBackdrops2';
 const MAX_IMAGES = 12;
 // No volver a pedirlos en cada visita al Home: con renovarlos cada 12 h basta
 const REFRESH_MS = 12 * 60 * 60 * 1000;
@@ -27,6 +27,23 @@ function shuffle(list) {
     return copy;
 }
 
+// Solo sirven fondos horizontales y con buena resolución. Algunas pelis tienen
+// como "fondo" un póster vertical o una imagen chica, que a pantalla completa
+// se ve recortada o borrosa.
+const MIN_WIDTH = 1280;
+const MIN_RATIO = 1.6; // 16:9 = 1.78
+
+function isGoodBackdrop(apiClient, item) {
+    return apiClient.getJSON(apiClient.getUrl('Items/' + item.Id + '/Images'))
+        .then(images => {
+            const backdrop = (images || []).find(img => img.ImageType === 'Backdrop' && (img.ImageIndex || 0) === 0);
+            return Boolean(backdrop?.Width && backdrop?.Height
+                && backdrop.Width >= MIN_WIDTH
+                && backdrop.Width / backdrop.Height >= MIN_RATIO);
+        })
+        .catch(() => false);
+}
+
 /** Guarda fondos al azar del catálogo. Se llama desde el Home (ya con sesión). */
 export function saveLoginBackdrops(apiClient, userId) {
     const stored = readStore();
@@ -38,20 +55,23 @@ export function saveLoginBackdrops(apiClient, userId) {
         IncludeItemTypes: 'Movie,Series',
         Recursive: true,
         SortBy: 'Random',
-        Limit: MAX_IMAGES,
+        // Pedimos el doble porque algunos se descartan por tamaño o forma
+        Limit: MAX_IMAGES * 2,
         ImageTypes: 'Backdrop',
         EnableImageTypes: 'Backdrop',
         ImageTypeLimit: 1,
         EnableTotalRecordCount: false
     }).then(result => {
-        const urls = (result.Items || [])
-            .filter(item => item.BackdropImageTags?.length)
-            .map(item => apiClient.getImageUrl(item.Id, {
-                type: 'Backdrop',
-                tag: item.BackdropImageTags[0],
-                maxWidth: 1920,
-                quality: 80
-            }));
+        const candidates = (result.Items || []).filter(item => item.BackdropImageTags?.length);
+        return Promise.all(candidates.map(item => isGoodBackdrop(apiClient, item)))
+            .then(checks => candidates.filter((_item, i) => checks[i]).slice(0, MAX_IMAGES));
+    }).then(items => {
+        const urls = items.map(item => apiClient.getImageUrl(item.Id, {
+            type: 'Backdrop',
+            tag: item.BackdropImageTags[0],
+            maxWidth: 1920,
+            quality: 80
+        }));
 
         if (urls.length) {
             try {

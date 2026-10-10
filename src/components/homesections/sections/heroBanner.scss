@@ -1,0 +1,171 @@
+/* CJ7 Stream: banner destacado del Home */
+.cj7Hero {
+    position: relative;
+    height: 62vh;
+    min-height: 20em;
+    max-height: 46em;
+    margin-bottom: 1.5em;
+    overflow: hidden;
+}
+
+.cj7Hero-slide {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 900ms ease, visibility 0s linear 900ms;
+}
+
+.cj7Hero-slide.is-active {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 900ms ease;
+}
+
+.cj7Hero-bg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-size: cover;
+    background-position: center 20%;
+}
+
+/* Degradado: oscuro a la izquierda (para leer el texto) y abajo (para fundirse con las filas) */
+.cj7Hero-shade {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background:
+        linear-gradient(90deg, rgba(11, 10, 14, 0.95) 0%, rgba(11, 10, 14, 0.7) 35%, rgba(11, 10, 14, 0) 70%),
+        linear-gradient(0deg, #0b0a0e 0%, rgba(11, 10, 14, 0) 40%);
+}
+
+.cj7Hero-content {
+    position: absolute;
+    left: 0;
+    bottom: 14%;
+    max-width: 40em;
+    width: 90%;
+    padding: 0 3.3%;
+    box-sizing: border-box;
+}
+
+.cj7Hero-logo {
+    display: block;
+    max-width: 24em;
+    width: 70%;
+    max-height: 7em;
+    object-fit: contain;
+    object-position: left bottom;
+    margin-bottom: 0.8em;
+}
+
+.cj7Hero-title {
+    font-size: 2.6em;
+    line-height: 1.1;
+    margin: 0 0 0.3em;
+    color: #fff;
+}
+
+.cj7Hero-meta {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 0.95em;
+    margin-bottom: 0.7em;
+}
+
+.cj7Hero-rating {
+    color: #a855f7;
+    font-weight: 600;
+}
+
+.cj7Hero-overview {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.85);
+    margin: 0 0 1.2em;
+}
+
+.cj7Hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.cj7Hero-actions .material-icons {
+    margin-right: 0.35em;
+}
+
+.cj7Hero-actions .emby-button {
+    margin: 0 0.8em 0.6em 0;
+    display: inline-flex;
+    align-items: center;
+    padding: 0.7em 1.4em;
+    border-radius: 0.4em;
+    font-weight: 600;
+}
+
+.cj7Hero-play {
+    background: #a855f7 !important;
+    color: #fff !important;
+}
+
+.cj7Hero-info {
+    background: rgba(255, 255, 255, 0.14) !important;
+    color: #fff !important;
+}
+
+.cj7Hero-dots {
+    position: absolute;
+    right: 3.3%;
+    bottom: 1.4em;
+    display: flex;
+}
+
+.cj7Hero-dot {
+    width: 0.55em;
+    height: 0.55em;
+    padding: 0;
+    border: 0;
+    border-radius: 1em;
+    background: rgba(255, 255, 255, 0.35);
+    margin-left: 0.45em;
+    cursor: pointer;
+    transition: width 300ms ease, background 300ms ease;
+}
+
+.cj7Hero-dot.is-active {
+    width: 1.5em;
+    background: #a855f7;
+}
+
+/* Celulares: banner más bajo, texto más chico y degradado desde abajo */
+@media (max-width: 50em) {
+    .cj7Hero {
+        height: 55vh;
+    }
+
+    .cj7Hero-shade {
+        background: linear-gradient(0deg, #0b0a0e 0%, rgba(11, 10, 14, 0.75) 45%, rgba(11, 10, 14, 0.1) 100%);
+    }
+
+    .cj7Hero-title {
+        font-size: 1.8em;
+    }
+
+    .cj7Hero-overview {
+        -webkit-line-clamp: 2;
+    }
+
+    .cj7Hero-dots {
+        display: none;
+    }
+}

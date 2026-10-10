@@ -15,6 +15,7 @@ import { loadRecentlyAdded } from './sections/recentlyAdded';
 import { loadResume } from './sections/resume';
 import { loadGenreRows, loadMiLista, loadNovedades } from './sections/genreRows';
 import { saveLoginBackdrops } from 'scripts/cj7LoginBackdrops';
+import { loadHeroBanner } from './sections/heroBanner';
 
 import 'elements/emby-button/paper-icon-button-light';
 import 'elements/emby-itemscontainer/emby-itemscontainer';
@@ -70,6 +71,11 @@ export function loadSections(elem, apiClient, user, userSettings) {
 
                 elem.innerHTML = html;
                 elem.classList.add('homeSectionsContainer');
+
+                // CJ7 Stream: banner destacado arriba de todo
+                const heroElem = document.createElement('div');
+                elem.insertBefore(heroElem, elem.firstChild);
+                loadHeroBanner(heroElem, apiClient, userId);
 
                 const promises = [];
                 const sections = getAllSectionsToShow(userSettings, userSectionCount);
