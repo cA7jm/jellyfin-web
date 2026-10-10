@@ -1,11 +1,11 @@
 {
-    "name": "Jellyfin",
-    "description": "The Free Software Media System",
+    "name": "CJ7 Stream",
+    "description": "Streaming familiar CJ7",
     "lang": "en-US",
-    "short_name": "Jellyfin",
+    "short_name": "CJ7 Stream",
     "start_url": "index.html#/home",
-    "theme_color": "#101010",
-    "background_color": "#101010",
+    "theme_color": "#0b0a0e",
+    "background_color": "#0b0a0e",
     "display": "standalone",
     "icons": [
         {
