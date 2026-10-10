@@ -13,7 +13,7 @@ import { loadLiveTV } from './sections/liveTv';
 import { loadNextUp } from './sections/nextUp';
 import { loadRecentlyAdded } from './sections/recentlyAdded';
 import { loadResume } from './sections/resume';
-import { loadGenreRows } from './sections/genreRows';
+import { loadGenreRows, loadMiLista, loadNovedades } from './sections/genreRows';
 
 import 'elements/emby-button/paper-icon-button-light';
 import 'elements/emby-itemscontainer/emby-itemscontainer';
@@ -75,6 +75,16 @@ export function loadSections(elem, apiClient, user, userSettings) {
                 for (let i = 0; i < sections.length; i++) {
                     promises.push(loadSection(elem, apiClient, user, userSettings, userViews, sections, i));
                 }
+
+                // CJ7 Stream: fila "Mi Lista" (favoritos del usuario)
+                const miListaElem = document.createElement('div');
+                elem.appendChild(miListaElem);
+                loadMiLista(miListaElem, apiClient, userId, { enableOverflow: enableScrollX() });
+
+                // CJ7 Stream: fila "Novedades" (pelis y series mezcladas) antes de los géneros
+                const novedadesElem = document.createElement('div');
+                elem.appendChild(novedadesElem);
+                loadNovedades(novedadesElem, apiClient, { enableOverflow: enableScrollX() });
 
                 // CJ7 Stream: filas por género al final del Home
                 const genreElem = document.createElement('div');
