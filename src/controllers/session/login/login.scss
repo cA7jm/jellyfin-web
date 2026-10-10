@@ -24,3 +24,8 @@
         width: fit-content;
     }
 }
+
+/* CJ7 Stream: en el login el fondo se ve más (Jellyfin lo tapa al 86%) */
+.cj7-login .backgroundContainer.withBackdrop {
+    background-color: rgba(11, 10, 14, 0.6);
+}

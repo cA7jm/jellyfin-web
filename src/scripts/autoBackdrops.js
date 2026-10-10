@@ -6,6 +6,7 @@ import { queryClient } from 'utils/query/queryClient';
 import { getBrandingOptionsQuery } from 'apps/dashboard/features/branding/api/useBrandingOptions';
 import { SPLASHSCREEN_URL } from 'constants/branding';
 import { ServerConnections } from 'lib/jellyfin-apiclient';
+import { getLoginBackdrops } from './cj7LoginBackdrops';
 
 const cache = {};
 
@@ -64,6 +65,13 @@ function showBackdrop(type, parentId) {
 }
 
 async function showSplashScreen() {
+    // CJ7 Stream: si este dispositivo tiene fondos guardados, rotarlos
+    const cj7Backdrops = getLoginBackdrops();
+    if (cj7Backdrops.length) {
+        setBackdropImages(cj7Backdrops);
+        return;
+    }
+
     const api = ServerConnections.getCurrentApi();
     const brandingOptions = await queryClient.fetchQuery(getBrandingOptionsQuery(api));
     if (brandingOptions.SplashscreenEnabled) {

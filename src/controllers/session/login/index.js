@@ -263,6 +263,7 @@ export default function (view, params) {
     });
 
     view.addEventListener('viewshow', function () {
+        document.documentElement.classList.add('cj7-login');
         loading.show();
         libraryMenu.setTransparentMenu(true);
 
@@ -313,6 +314,7 @@ export default function (view, params) {
         });
     });
     view.addEventListener('viewhide', function () {
+        document.documentElement.classList.remove('cj7-login');
         libraryMenu.setTransparentMenu(false);
     });
 }

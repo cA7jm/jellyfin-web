@@ -14,6 +14,7 @@ import { loadNextUp } from './sections/nextUp';
 import { loadRecentlyAdded } from './sections/recentlyAdded';
 import { loadResume } from './sections/resume';
 import { loadGenreRows, loadMiLista, loadNovedades } from './sections/genreRows';
+import { saveLoginBackdrops } from 'scripts/cj7LoginBackdrops';
 
 import 'elements/emby-button/paper-icon-button-light';
 import 'elements/emby-itemscontainer/emby-itemscontainer';
@@ -75,6 +76,9 @@ export function loadSections(elem, apiClient, user, userSettings) {
                 for (let i = 0; i < sections.length; i++) {
                     promises.push(loadSection(elem, apiClient, user, userSettings, userViews, sections, i));
                 }
+
+                // CJ7 Stream: guardar fondos para el login (no bloquea la carga del Home)
+                saveLoginBackdrops(apiClient, userId);
 
                 // CJ7 Stream: fila "Mi Lista" (favoritos del usuario)
                 const miListaElem = document.createElement('div');
