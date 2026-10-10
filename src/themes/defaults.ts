@@ -8,23 +8,23 @@ export const DEFAULT_COLOR_SCHEME: ColorSystemOptions = {
     palette: {
         mode: 'dark',
         primary: {
-            main: '#00a4dc'
+            main: '#a855f7'
         },
         secondary: {
-            main: '#aa5cc3'
+            main: '#a855f7'
         },
         background: {
-            default: '#101010',
-            paper: '#202020'
+            default: '#0d0714',
+            paper: '#1a0f26'
         },
         action: {
             selectedOpacity: 0.2
         },
         starIcon: {
-            main: '#f2b01e' // Yellow color
+            main: '#a855f7' // CJ7 purple
         },
         error: {
-            main: '#c62828' // Red color
+            main: '#a855f7' // CJ7 purple
         }
     }
 };

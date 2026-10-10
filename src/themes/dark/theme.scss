@@ -1,6 +1,6 @@
 * {
     scrollbar-width: thin;
-    scrollbar-color: #3b3b3b #202020;
+    scrollbar-color: #3b3b3b #1a0f26;
 }
 
 .skinHeader,
@@ -12,7 +12,7 @@ html {
 .wizardStartForm,
 .ui-corner-all,
 .ui-shadow {
-    background-color: #101010;
+    background-color: #0d0714;
 }
 
 .emby-collapsible-button {
@@ -21,7 +21,7 @@ html {
 }
 
 .skinHeader-withBackground {
-    background-color: #202020;
+    background-color: #1a0f26;
 }
 
 .skinHeader.semiTransparent {
@@ -46,7 +46,7 @@ html {
 .nowPlayingPlaylist,
 .nowPlayingContextMenu,
 html {
-    background-color: #101010;
+    background-color: #0d0714;
 }
 
 .backgroundContainer.withBackdrop {
@@ -55,18 +55,18 @@ html {
 
 @media (hover: hover) and (pointer: fine) {
     .paper-icon-button-light:hover:not(:disabled) {
-        color: #00a4dc;
-        background-color: rgba(0, 164, 220, 0.2);
+        color: #a855f7;
+        background-color: rgba(168, 85, 247, 0.2);
     }
 }
 
 .paper-icon-button-light:active:not(:disabled) {
-    color: #00a4dc;
-    background-color: rgba(0, 164, 220, 0.2);
+    color: #a855f7;
+    background-color: rgba(168, 85, 247, 0.2);
 }
 
 .paper-icon-button-light.show-focus:focus {
-    color: #00a4dc;
+    color: #a855f7;
 }
 
 .fab,
@@ -81,7 +81,7 @@ html {
 }
 
 .button-submit {
-    background: #00a4dc;
+    background: #a855f7;
     color: #fff;
 }
 
@@ -111,7 +111,7 @@ html {
 .inputLabelFocused,
 .selectLabelFocused,
 .textareaLabelFocused {
-    color: #00a4dc;
+    color: #a855f7;
 }
 
 .checkboxOutline {
@@ -123,7 +123,7 @@ html {
 .formDialogHeader:not(.formDialogHeader-clear),
 .paperList,
 .visualCardBox {
-    background-color: #202020;
+    background-color: #1a0f26;
 }
 
 .layout-tv .formDialogFooter:not(.formDialogFooter-clear) {
@@ -179,22 +179,22 @@ html {
 
 .appfooter,
 .playlistSectionButton {
-    background: #202020;
+    background: #1a0f26;
     color: #ccc;
     color: rgba(255, 255, 255, 0.78);
 }
 
 .itemSelectionPanel {
-    border: 1px solid #00a4dc;
+    border: 1px solid #a855f7;
 }
 
 .selectionCommandsPanel {
-    background: #00a4dc;
+    background: #a855f7;
     color: #fff;
 }
 
 .upNextDialog-countdownText {
-    color: #00a4dc;
+    color: #a855f7;
 }
 
 .alphaPickerButton {
@@ -208,12 +208,12 @@ html {
 }
 
 .alphaPickerButton-tv:focus {
-    background-color: #00a4dc;
+    background-color: #a855f7;
     color: #fff !important;
 }
 
 .detailTableBodyRow-shaded:nth-child(even) {
-    background: #1c1c1c;
+    background: #1f1230;
     background: rgba(30, 30, 30, 0.9);
 }
 
@@ -227,7 +227,7 @@ html {
 
 .noBackdropTransparency .detailPagePrimaryContainer,
 .noBackdropTransparency .detailPageSecondaryContainer {
-    background-color: #101010;
+    background-color: #0d0714;
 }
 
 .listItem-border {
@@ -243,15 +243,15 @@ html {
 }
 
 .progressring-spiner {
-    border-color: #00a4dc;
+    border-color: #a855f7;
 }
 
 .button-flat:hover {
-    color: #00a4dc;
+    color: #a855f7;
 }
 
 .button-link {
-    color: #00a4dc;
+    color: #a855f7;
 }
 
 .mediaInfoText {
@@ -269,7 +269,7 @@ html {
 
 .emby-input:focus,
 .emby-textarea:focus {
-    border-color: #00a4dc;
+    border-color: #a855f7;
 }
 
 .emby-select-withcolor {
@@ -284,16 +284,16 @@ html {
 }
 
 .emby-select-withcolor:focus {
-    border-color: #00a4dc !important;
+    border-color: #a855f7 !important;
 }
 
 .emby-select-tv-withcolor:focus {
-    background-color: #00a4dc !important;
+    background-color: #a855f7 !important;
     color: #fff !important;
 }
 
 .emby-checkbox:checked + span + .checkboxOutline {
-    border-color: #00a4dc;
+    border-color: #a855f7;
 }
 
 .emby-checkbox:focus + span + .checkboxOutline {
@@ -302,11 +302,11 @@ html {
 
 .emby-checkbox:checked + span + .checkboxOutline,
 .itemProgressBarForeground {
-    background-color: #00a4dc;
+    background-color: #a855f7;
 }
 
 .emby-checkbox:focus:not(:checked) + span + .checkboxOutline {
-    border-color: #00a4dc;
+    border-color: #a855f7;
 }
 
 .itemProgressBarForeground-recording {
@@ -317,7 +317,7 @@ html {
 .fullSyncIndicator,
 .mediaSourceIndicator,
 .playedIndicator {
-    background: #00a4dc;
+    background: #a855f7;
 }
 
 .fullSyncIndicator {
@@ -326,7 +326,7 @@ html {
 
 .mainDrawer,
 .drawer-open {
-    background-color: #101010;
+    background-color: #0d0714;
 }
 
 .navMenuOption:hover {
@@ -334,12 +334,12 @@ html {
 }
 
 .navMenuOption-selected {
-    background: #00a4dc !important;
+    background: #a855f7 !important;
     color: #fff;
 }
 
 .emby-button.show-focus:focus {
-    background: #00a4dc;
+    background: #a855f7;
     color: #fff;
 }
 
@@ -352,11 +352,11 @@ html {
 }
 
 .emby-tab-button.show-focus:focus {
-    color: #00a4dc;
+    color: #a855f7;
 }
 
 .emby-tab-button:hover {
-    color: #00a4dc;
+    color: #a855f7;
 }
 
 .channelPrograms,
@@ -387,7 +387,7 @@ html {
 
 .guide-channelHeaderCell:focus,
 .programCell:focus {
-    background-color: #00a4dc !important;
+    background-color: #a855f7 !important;
     color: #fff !important;
 }
 
@@ -407,11 +407,11 @@ html {
 
 .guide-date-tab-button.emby-tab-button-active,
 .guide-date-tab-button:focus {
-    color: #00a4dc;
+    color: #a855f7;
 }
 
 .guide-date-tab-button.show-focus:focus {
-    background-color: #00a4dc;
+    background-color: #a855f7;
     color: #fff;
 }
 
@@ -436,12 +436,12 @@ html {
 }
 
 .buttonActive {
-    color: #00a4dc !important;
+    color: #a855f7 !important;
 }
 
 .card:focus .cardBox.visualCardBox,
 .card:focus .cardBox:not(.visualCardBox) .cardScalable {
-    border-color: #00a4dc !important;
+    border-color: #a855f7 !important;
 }
 
 ::-webkit-scrollbar-track {
@@ -469,27 +469,27 @@ html {
 }
 
 .metadataSidebarIcon {
-    color: #00a4dc;
+    color: #a855f7;
 }
 
 .emby-button.detailFloatingButton {
-    background-color: #00a4dc;
+    background-color: #a855f7;
     color: #fff;
 }
 
 .layout-tv .emby-button.detailFloatingButton:focus {
     background-color: #f2f2f2;
-    color: #00a4dc;
+    color: #a855f7;
 }
 
 #comicsPlayer,
 #bookPlayer,
 #pdfPlayer {
-    background: #101010;
+    background: #0d0714;
 }
 
 #comicsPlayer .swiper-pagination {
-    background: #101010;
+    background: #0d0714;
     color: #fff;
 }
 
@@ -503,7 +503,7 @@ html {
 }
 
 #dialogToc {
-    background-color: #101010;
+    background-color: #0d0714;
 }
 
 #dialogToc .bookplayerButtonIcon {
@@ -511,7 +511,7 @@ html {
 }
 
 #dialogToc .bookplayerButtonIcon:hover {
-    color: #00a4dc;
+    color: #a855f7;
 }
 
 #dialogToc .toc li a:link {
@@ -520,5 +520,5 @@ html {
 
 #dialogToc .toc li a:active,
 #dialogToc .toc li a:hover {
-    color: #00a4dc;
+    color: #a855f7;
 }
