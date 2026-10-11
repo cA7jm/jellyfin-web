@@ -1,0 +1,198 @@
+/* =====================================================================
+   CJ7 Stream: ficha de película/serie estilo maqueta
+   Arriba: fondo grande con degradado. Encima: póster a la izquierda y,
+   al lado, título, datos, sinopsis, botón Reproducir y audio/subtítulos.
+   Abajo: episodios (series), Reparto y Más como este.
+   ===================================================================== */
+
+/* Menos ruido: etiquetas, enlaces externos, escritores, estudios y los
+   selectores de video/audio/subtítulos (mostraban el nombre del proveedor).
+   El audio y los subtítulos se siguen cambiando desde el reproductor. */
+#itemDetailPage {
+    .itemTags,
+    .itemExternalLinks,
+    .writersGroup,
+    .studiosGroup,
+    .trackSelections {
+        display: none !important;
+    }
+}
+
+/* Botón principal: pastilla morada con texto. El texto sale del atributo
+   "title" que Jellyfin ya cambia solo entre "Reproducir" y "Reanudar". */
+#itemDetailPage .mainDetailButtons .btnPlay:not(.hide) {
+    flex-direction: row;
+    background: #a855f7 !important;
+    color: #fff !important;
+    border-radius: 0.4em;
+    padding: 0.55em 1.4em 0.55em 1em !important;
+    margin-right: 0.8em !important;
+
+    .detailButton-content {
+        flex-direction: row;
+    }
+
+    &::after {
+        content: attr(title);
+        font-weight: 600;
+        margin-left: 0.4em;
+    }
+}
+
+/* ---------- Escritorio ---------- */
+@media all and (min-width: 62.5em) {
+    .layout-desktop #itemDetailPage {
+        /* Fondo grande detrás de todo el encabezado */
+        .itemBackdrop {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 78vh;
+            z-index: 0;
+            background-attachment: scroll;
+            background-position: center 15%;
+
+            &::after {
+                content: "";
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                background:
+                    linear-gradient(90deg, rgba(11, 10, 14, 0.95) 0%, rgba(11, 10, 14, 0.6) 40%, rgba(11, 10, 14, 0.1) 75%),
+                    linear-gradient(0deg, #0b0a0e 0%, rgba(11, 10, 14, 0.4) 35%, rgba(11, 10, 14, 0) 60%);
+            }
+        }
+
+        /* El logo flotante se pisaba con el título: fuera */
+        .detailLogo {
+            display: none;
+        }
+
+        .detailPageWrapperContainer {
+            position: relative;
+            z-index: 1;
+            padding-top: 30vh;
+            min-height: 0;
+        }
+
+        /* Sin imagen de fondo: no dejar un hueco negro enorme */
+        &.cj7-noBackdrop {
+            .itemBackdrop {
+                display: none;
+            }
+
+            .detailPageWrapperContainer {
+                padding-top: 5em;
+            }
+        }
+
+        /* Póster + información lado a lado */
+        .detailPagePrimaryContainer {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-end;
+            padding: 0 3.3%;
+            background: none !important;
+        }
+
+        .detailPageSecondaryContainer {
+            background: none !important;
+        }
+
+        .detailImageContainer.hide-mobile {
+            flex: 0 0 15vw;
+            max-width: 15vw;
+        }
+
+        .detailImageContainer .card {
+            position: static;
+            float: none;
+            width: 100%;
+            max-width: none;
+            top: auto;
+            left: auto;
+            margin: 0;
+        }
+
+        .detailRibbon {
+            flex: 1 1 0;
+            min-width: 0;
+            display: block;
+            margin: 0;
+            height: auto;
+            padding: 0 0 0 2.5em !important;
+            background: none;
+        }
+
+        .nameContainer .itemName {
+            font-size: 2.4em;
+            line-height: 1.15;
+            white-space: normal;
+            margin: 0 0 0.25em;
+        }
+
+        .nameContainer .itemName.originalTitle {
+            font-size: 1em;
+            opacity: 0.7;
+        }
+
+        .infoWrapper .tagline {
+            margin: 0.6em 0 0;
+            font-size: 1em;
+            font-style: italic;
+            opacity: 0.8;
+        }
+
+        .infoWrapper .overview {
+            font-size: 1.05em;
+            line-height: 1.55;
+            max-width: 48em;
+            margin: 0.8em 0 0;
+            color: rgba(255, 255, 255, 0.88);
+        }
+
+        .mainDetailButtons {
+            margin: 1.2em 0 0.6em;
+        }
+
+        /* Géneros, director y episodios: ancho completo debajo */
+        .detailPagePrimaryContent {
+            flex: 1 1 100%;
+            padding: 1.2em 0 0 !important;
+        }
+
+        /* Reparto y Más como este alineados a la izquierda (antes empezaban al 32%) */
+        .detailPageContent {
+            padding-left: 3.3% !important;
+            padding-right: 2% !important;
+        }
+    }
+}
+
+/* ---------- Reparto en círculos (como la maqueta) ---------- */
+#itemDetailPage #castContent,
+#itemDetailPage #guestCastContent {
+    .cardPadder-overflowPortrait {
+        padding-bottom: 100%;
+    }
+
+    .cardScalable {
+        border-radius: 50%;
+        overflow: hidden;
+    }
+
+    .cardImageContainer {
+        border-radius: 50%;
+        background-position: center 20%;
+    }
+}
+
+@media all and (min-width: 62.5em) {
+    .layout-desktop #itemDetailPage #castContent .overflowPortraitCard,
+    .layout-desktop #itemDetailPage #guestCastContent .overflowPortraitCard {
+        width: 8.5vw;
+    }
+}

@@ -44,6 +44,7 @@ import 'elements/emby-scroller/emby-scroller';
 import 'elements/emby-select/emby-select';
 
 import 'styles/scrollstyles.scss';
+import './cj7Details.scss';
 
 /** Item types that use a list view for their children. */
 const LIST_VIEW_TYPES = [
@@ -519,11 +520,6 @@ function renderBackdrop(page, item) {
 }
 
 function renderHeaderBackdrop(page, item, apiClient) {
-    // Details banner is disabled in user settings
-    if (!userSettings.detailsBanner()) {
-        return false;
-    }
-
     // Disable item backdrop for books and people because they only have primary images
     if (item.Type === 'Person' || item.Type === 'Book') {
         return false;
@@ -544,6 +540,35 @@ function renderHeaderBackdrop(page, item, apiClient) {
     return hasbackdrop;
 }
 
+// CJ7 Stream: en escritorio, la sinopsis y los selectores de audio/subtítulos
+// van al lado del título y del botón Reproducir (como en la maqueta), en vez
+// de quedar debajo del póster. Solo mueve los elementos una vez por página.
+function cj7ArrangeDetailPage(page) {
+    if (!layoutManager.desktop || page.classList.contains('cj7-arranged')) {
+        return;
+    }
+
+    const ribbon = page.querySelector('.detailRibbon');
+    const infoWrapper = ribbon?.querySelector('.infoWrapper');
+    if (!ribbon || !infoWrapper) {
+        return;
+    }
+
+    for (const selector of ['.detailSectionContent .tagline', '.detailSectionContent .overview', '.detailSectionContent .overview-controls']) {
+        const elem = page.querySelector(selector);
+        if (elem) {
+            infoWrapper.appendChild(elem);
+        }
+    }
+
+    const trackSelections = page.querySelector('.trackSelections');
+    if (trackSelections) {
+        ribbon.appendChild(trackSelections);
+    }
+
+    page.classList.add('cj7-arranged');
+}
+
 function reloadFromItem(instance, page, params, item, user) {
     const apiClient = ServerConnections.getApiClient(item.ServerId);
 
@@ -554,9 +579,10 @@ function reloadFromItem(instance, page, params, item, user) {
 
     renderLogo(page, item, apiClient);
 
-    // Render the mobile header backdrop
-    if (layoutManager.mobile) {
-        renderHeaderBackdrop(page, item, apiClient);
+    // CJ7 Stream: fondo grande arriba también en escritorio (antes solo en celular)
+    cj7ArrangeDetailPage(page);
+    if (!layoutManager.tv) {
+        page.classList.toggle('cj7-noBackdrop', !renderHeaderBackdrop(page, item, apiClient));
     }
 
     renderBackdrop(page, item);
